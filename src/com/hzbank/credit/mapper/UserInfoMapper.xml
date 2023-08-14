@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzbank.credit.mapper.UserInfoMapper">
+
+    <!--
+        #{id}:从传递过来的参数中取出id值
+    -->
+
+    <!--    public Employee getEmpByID(int id);
+    -->
+    <select id="getUserInfoById" resultType="com.hzbank.credit.entity.UserInfo">
+
+        select * from userInfo where id = #{id}
+
+    </select>
+
+</mapper>
