@@ -10,6 +10,10 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ *
+ * 修改密码接口
+ */
 public class ChangePassService implements BaseService {
     @Override
     public void doBiz() throws IOException {

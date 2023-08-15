@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
+/**
+ * 登录接口
+ */
 public class LoginService implements BaseService {
 
 

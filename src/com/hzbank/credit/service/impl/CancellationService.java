@@ -6,6 +6,9 @@ import com.hzbank.credit.service.BaseService;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * 销户接口
+ */
 public class CancellationService implements BaseService {
     @Override
     public void doBiz() throws IOException {

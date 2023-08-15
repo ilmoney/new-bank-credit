@@ -6,6 +6,9 @@ import com.hzbank.credit.service.impl.*;
 
 import static javafx.application.Platform.exit;
 
+/**
+ * 接口服务跳转类
+ */
 public class BizUtil {
     public static BaseService getServiceByType(int type){
 
