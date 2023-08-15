@@ -3,27 +3,28 @@ package com.hzbank.credit.entity;
 import java.util.Date;
 
 public class CashAdvance {
-    private String creditCardID;
-    private float preApprovedAmount;
+
+    private String cardNumber;
+    private Float preApprovedAmount;
     private Date loanDate;
-    private float dailyLoanAmount;
+    private Float dailyLoanAmount;
 
     public CashAdvance() {
     }
 
     public CashAdvance(String creditCardID, float preApprovedAmount, Date loanDate, float dailyLoanAmount) {
-        this.creditCardID = creditCardID;
+        this.cardNumber = creditCardID;
         this.preApprovedAmount = preApprovedAmount;
         this.loanDate = loanDate;
         this.dailyLoanAmount = dailyLoanAmount;
     }
 
-    public String getCreditCardID() {
-        return creditCardID;
+    public String getCardNumber() {
+        return cardNumber;
     }
 
-    public void setCreditCardID(String creditCardID) {
-        this.creditCardID = creditCardID;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public float getPreApprovedAmount() {

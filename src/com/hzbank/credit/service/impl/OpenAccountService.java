@@ -65,8 +65,7 @@ public class OpenAccountService implements BaseService {
             campusCardEntity.setBalance(0);
             mapper.insertCampuse(campusCardEntity);
             openSession.commit();
-            openSession.close();
-            System.out.println("创建一卡通账号成功并返回首页！！！！");
+            System.out.println("创建一卡通账号" + campuscardID  + "成功并返回首页！！！！");
 
         } catch (IOException e) {
             throw new RuntimeException(e);

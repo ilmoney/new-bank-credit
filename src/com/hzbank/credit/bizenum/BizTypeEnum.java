@@ -2,7 +2,7 @@ package com.hzbank.credit.bizenum;
 
 public enum BizTypeEnum {
 
-    NONE_BIZ_TYPE(0, "登录"),
+    LOGIN_BIZ_TYPE(0, "登录"),
     OPEN_ACCOUNT_BIZ_TYPE(1, "一卡通账户开户"),
     CREDIT_CARD_BIZ_TYPE(2, "开卡"),
     CHANGE_PASS_BIZ_TYPE(3, "修改密码"),

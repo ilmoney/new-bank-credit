@@ -7,7 +7,7 @@ public class CampusCard {
     private String campusCardID;
 
     private String transactionPassword;
-    private float balance;
+    private Float balance;
 
     public CampusCard() {
     }

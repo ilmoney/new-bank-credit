@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 public class OpenCardService implements BaseService {
     @Override
-    public void doBiz() {
+    public void doBiz() throws IOException {
 
         System.out.println("=======================欢迎进入信用卡开卡服务======================");
         Scanner in = new Scanner(System.in);
@@ -31,21 +31,13 @@ public class OpenCardService implements BaseService {
             System.out.println("请输入一卡通账号：");
             campusid = in.nextLine();
 
-            try {
-                //查询一卡通用户是否存在
-                SqlSession openssion = MyBatisUtil.getSqlSession();
-                CampusCardMapper mapper = openssion.getMapper(CampusCardMapper.class);
-                campus = mapper.selectbyid(campusid);
-                if(campus==null) {
-                    System.out.println("用户不存在，请先创建一卡通账号！！");
-                    openssion.close();
-                    return;
-                }
-                else {
-                    openssion.close();
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            //查询一卡通用户是否存在
+            SqlSession openssion = MyBatisUtil.getSqlSession();
+            CampusCardMapper mapper = openssion.getMapper(CampusCardMapper.class);
+            campus = mapper.selectbyid(campusid);
+            if(campus==null) {
+                System.out.println("用户不存在，请先创建一卡通账号！！");
+                return;
             }
             //验证身份证和密码
             System.out.println("请输入身份证号:");
@@ -80,7 +72,7 @@ public class OpenCardService implements BaseService {
         //生成卡号
         String cardid = CheckNumber.generateBankCardNumber("6");
         CreditCard crecard = new CreditCard();
-        crecard.setCreditCardID(cardid);
+        crecard.setCreditCard(cardid);
         crecard.setAnnualFee(bizconstant.annualfee);
         crecard.setCampusCardNumber(campusid);
         crecard.setTransactionPassword(password);
@@ -88,17 +80,16 @@ public class OpenCardService implements BaseService {
         crecard.setCurrency(currency);
         crecard.setAvailableCredit(bizconstant.availablcredit);
         crecard.setTransactionCount(0);
-        crecard.setCardBalance(0);
-        crecard.setCardStaus(CardTypeEnum.CARD_NORMAL_TYPE.getName());
+        crecard.setCardBalance(0f);
+        crecard.setCardStatus(CardTypeEnum.CARD_NORMAL_TYPE.getName());
 
         //数据库插入卡号
         try {
             SqlSession copenssion = MyBatisUtil.getSqlSession();
             CreditCardMapper cmapper = copenssion.getMapper(CreditCardMapper.class);
             cmapper.insertCredit(crecard);
-            System.out.println("开卡成功！");
-            copenssion.commit();;
-            copenssion.close();
+            copenssion.commit();
+            System.out.println("开卡成功！您的卡号未: " + cardid);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

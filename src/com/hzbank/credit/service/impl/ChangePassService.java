@@ -40,7 +40,6 @@ public class ChangePassService implements BaseService {
         pmapper.updatePass(newpass,cardid);
         System.out.println("密码修改成功！");
         openssion.commit();
-        openssion.close();
 
     }
 }

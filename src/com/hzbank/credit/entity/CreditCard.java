@@ -2,49 +2,47 @@ package com.hzbank.credit.entity;
 
 public class CreditCard {
     //卡号
-    private String creditCardID;
+    private String creditCard;
     //一卡通账号
     private String campusCardNumber;
     //信用卡状态
-    private String cardStaus;
+    private String cardStatus;
     //交易密码
     private String transactionPassword;
     //信用额度
-    private float creditLimit;
+    private Float creditLimit;
     //币种
     private String currency;
     //可透支额度
-    private float availableCredit;
+    private Float availableCredit;
     //年费
-    private float annualFee;
+    private Float annualFee;
     //消费次数
-    private int transactionCount;
+    private Integer transactionCount;
     //已还款金额
-    private float totalRepaid;
+    private Float totalRepaid;
     //已消费金额
-    private float totalSpent;
+    private Float totalSpent;
     //最低还款金额
-    private float minimumRepaymeng;
+    private Float minimumRepayment;
     //卡内余额
-    private float cardBalance;
+    private Float cardBalance;
     //应还金额
-    private float amountDue;
+    private Float amountDue;
     //未还部分（最低）
-    private float unpaidMinmumRepayment;
+    private Float unpaidMinmumRepayment;
     //日利息
-    private float dailyInterest;
+    private Float dailyInterest;
 
     public CreditCard() {
     }
 
-
-
-    public String getCreditCardID() {
-        return creditCardID;
+    public String getCreditCard() {
+        return creditCard;
     }
 
-    public void setCreditCardID(String creditCardID) {
-        this.creditCardID = creditCardID;
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 
     public String getCampusCardNumber() {
@@ -55,6 +53,14 @@ public class CreditCard {
         this.campusCardNumber = campusCardNumber;
     }
 
+    public String getCardStatus() {
+        return cardStatus;
+    }
+
+    public void setCardStatus(String cardStatus) {
+        this.cardStatus = cardStatus;
+    }
+
     public String getTransactionPassword() {
         return transactionPassword;
     }
@@ -63,11 +69,11 @@ public class CreditCard {
         this.transactionPassword = transactionPassword;
     }
 
-    public float getCreditLimit() {
+    public Float getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(float creditLimit) {
+    public void setCreditLimit(Float creditLimit) {
         this.creditLimit = creditLimit;
     }
 
@@ -79,91 +85,83 @@ public class CreditCard {
         this.currency = currency;
     }
 
-    public float getAvailableCredit() {
+    public Float getAvailableCredit() {
         return availableCredit;
     }
 
-    public void setAvailableCredit(float availableCredit) {
+    public void setAvailableCredit(Float availableCredit) {
         this.availableCredit = availableCredit;
     }
 
-    public float getAnnualFee() {
+    public Float getAnnualFee() {
         return annualFee;
     }
 
-    public void setAnnualFee(float annualFee) {
+    public void setAnnualFee(Float annualFee) {
         this.annualFee = annualFee;
     }
 
-    public int getTransactionCount() {
+    public Integer getTransactionCount() {
         return transactionCount;
     }
 
-    public void setTransactionCount(int transactionCount) {
+    public void setTransactionCount(Integer transactionCount) {
         this.transactionCount = transactionCount;
     }
 
-    public float getTotalRepaid() {
+    public Float getTotalRepaid() {
         return totalRepaid;
     }
 
-    public void setTotalRepaid(float totalRepaid) {
+    public void setTotalRepaid(Float totalRepaid) {
         this.totalRepaid = totalRepaid;
     }
 
-    public float getTotalSpent() {
+    public Float getTotalSpent() {
         return totalSpent;
     }
 
-    public void setTotalSpent(float totalSpent) {
+    public void setTotalSpent(Float totalSpent) {
         this.totalSpent = totalSpent;
     }
 
-    public float getMinimumRepaymeng() {
-        return minimumRepaymeng;
+    public Float getMinimumRepayment() {
+        return minimumRepayment;
     }
 
-    public void setMinimumRepaymeng(float minimumRepaymeng) {
-        this.minimumRepaymeng = minimumRepaymeng;
+    public void setMinimumRepayment(Float minimumRepayment) {
+        this.minimumRepayment = minimumRepayment;
     }
 
-    public float getCardBalance() {
+    public Float getCardBalance() {
         return cardBalance;
     }
 
-    public void setCardBalance(float cardBalance) {
+    public void setCardBalance(Float cardBalance) {
         this.cardBalance = cardBalance;
     }
 
-    public float getAmountDue() {
+    public Float getAmountDue() {
         return amountDue;
     }
 
-    public void setAmountDue(float amountDue) {
+    public void setAmountDue(Float amountDue) {
         this.amountDue = amountDue;
     }
 
-    public float getUnpaidMinmumRepayment() {
+    public Float getUnpaidMinmumRepayment() {
         return unpaidMinmumRepayment;
     }
 
-    public void setUnpaidMinmumRepayment(float unpaidMinmumRepayment) {
+    public void setUnpaidMinmumRepayment(Float unpaidMinmumRepayment) {
         this.unpaidMinmumRepayment = unpaidMinmumRepayment;
     }
 
-    public float getDailyInterest() {
+    public Float getDailyInterest() {
         return dailyInterest;
     }
 
-    public void setDailyInterest(float dailyInterest) {
+    public void setDailyInterest(Float dailyInterest) {
         this.dailyInterest = dailyInterest;
     }
-    public String getCardStaus() {
-        return cardStaus;
-    }
-
-    public void setCardStaus(String cardStaus) {
-        this.cardStaus = cardStaus;
-    }
-
 }

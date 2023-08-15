@@ -4,12 +4,10 @@ import com.hzbank.credit.Main;
 import com.hzbank.credit.entity.CreditCard;
 import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
-import com.hzbank.credit.util.CheckNumber;
 import com.hzbank.credit.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class LoginService implements BaseService {
@@ -29,7 +27,7 @@ public class LoginService implements BaseService {
             try {
                 SqlSession openssion = MyBatisUtil.getSqlSession();
                 CreditCardMapper mapper = openssion.getMapper(CreditCardMapper.class);
-                credit = mapper.getCrediCardInfo(cardid);
+                credit = mapper.getCreditCardInfo(cardid);
                 openssion.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);

@@ -5,7 +5,7 @@
 <mapper namespace="com.hzbank.credit.mapper.CreditCardMapper">
     <insert id="insertCredit" parameterType="com.hzbank.credit.entity.CreditCard">
         INSERT into creditcard (CreditCard,CampusCardNumber,CardStatus,TransactionPassword,CreditLimit,Currency,AvailableCredit,AnnualFee,TransactionCount,TotalSpent,TotalRepaid,MinimumRepayment,CardBalance,AmountDue,UnpaidMinimumRepayment,DailyInterest)
-        VALUES (#{crecard.creditCardID},#{crecard.campusCardNumber},#{crecard.cardStaus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid},#{crecard.minimumRepaymeng},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
+        VALUES (#{crecard.creditCard},#{crecard.campusCardNumber},#{crecard.cardStatus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid},#{crecard.minimumRepayment},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
     </insert>
     <update id="updatePass">
         UPDATE creditcard
@@ -16,7 +16,61 @@
         </set>
         WHERE CreditCard = #{cardnumber}
     </update>
-    <select id="getCrediCardInfo" resultType="com.hzbank.credit.entity.CreditCard">
+
+    <update id="updateCreditCardByEntity">
+        update creditcard
+        <set>
+            <if test="creditCard.campusCardNumber != null and creditCard.campusCardNumber != ''">
+                AND creditCard.campusCardNumber = #{creditCard.campusCardNumber}
+            </if>
+            <if test="creditCard.cardStatus != null and creditCard.cardStatus != ''">
+                AND creditCard.cardStatus = #{creditCard.cardStatus}
+            </if>
+            <if test="creditCard.transactionPassword != null and creditCard.transactionPassword != ''">
+                AND creditCard.transactionPassword = #{creditCard.transactionPassword}
+            </if>
+            <if test="creditCard.creditLimit != null">
+                AND creditCard.creditLimit = #{creditCard.creditLimit}
+            </if>
+            <if test="creditCard.currency != null and creditCard.currency != ''">
+                AND creditCard.currency = #{creditCard.currency}
+            </if>
+            <if test="creditCard.availableCredit != null">
+                AND creditCard.availableCredit = #{creditCard.availableCredit}
+            </if>
+            <if test="creditCard.annualFee != null">
+                AND creditCard.annualFee = #{creditCard.annualFee}
+            </if>
+            <if test="creditCard.transactionCount != null">
+                AND creditCard.transactionCount = #{creditCard.transactionCount}
+            </if>
+            <if test="creditCard.totalRepaid != null">
+                AND creditCard.totalRepaid = #{creditCard.totalRepaid}
+            </if>
+            <if test="creditCard.totalSpent != null">
+                AND creditCard.totalSpent = #{creditCard.totalSpent}
+            </if>
+            <if test="creditCard.minimumRepayment != null">
+                AND creditCard.minimumRepayment = #{creditCard.minimumRepayment}
+            </if>
+            <if test="creditCard.cardBalance != null">
+                AND creditCard.cardBalance = #{creditCard.cardBalance}
+            </if>
+            <if test="creditCard.amountDue != null">
+                AND creditCard.amountDue = #{creditCard.amountDue}
+            </if>
+            <if test="creditCard.unpaidMinmumRepayment != null">
+                AND creditCard.unpaidMinmumRepayment = #{creditCard.unpaidMinmumRepayment}
+            </if>
+            <if test="creditCard.dailyInterest != null">
+                AND creditCard.dailyInterest = #{creditCard.dailyInterest}
+            </if>
+        </set>
+        WHERE cardNumber = #{cardNumber}
+
+    </update>
+
+    <select id="getCreditCardInfo" resultType="com.hzbank.credit.entity.CreditCard">
           select * from creditcard where CreditCard = #{id}
     </select>
 

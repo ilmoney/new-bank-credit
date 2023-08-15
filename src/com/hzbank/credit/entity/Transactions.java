@@ -5,7 +5,7 @@ import java.util.Date;
 public class Transactions {
     private String creditCard;
     private String expenseSource;
-    private float expenseAmount;
+    private Float expenseAmount;
     private Date expenseTime;
     private String expenseType;
 

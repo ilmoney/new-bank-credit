@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzbank.credit.mapper.CashAdvanceMapper">
+    <update id="updateCashAdvanceByEntity">
+        UPDATE cashadvance
+        <set>
+            <if test="cashAdvance.preApprovedAmount != null">
+                preApprovedAmount = #{cashAdvance.preApprovedAmount},
+            </if>
+            <if test="cashAdvance.loanDate != null">
+                loanDate = #{cashAdvance.loanDate},
+            </if>
+            <if test="cashAdvance.dailyLoanAmount != null">
+                dailyLoanAmount = #{cashAdvance.dailyLoanAmount},
+            </if>
+        </set>
+        WHERE cardNumber = #{cardNumber}
+    </update>
+
+    <select id="getCashAdvanceByCardNumDate" resultType="com.hzbank.credit.entity.CashAdvance">
+        select CardNumber, PreApprovedAmount, LoanDate, DailyLoanAmount from cashadvance
+        where CardNumber = #{cardNumber} and LoanDate = #{date}
+    </select>
+</mapper>
+
+
+
