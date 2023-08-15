@@ -60,7 +60,7 @@ public class CreditCardSpendService implements BaseService {
         CreditCard newCreditCardInfo = new CreditCard();
 
         // 比可用信用额度低，优先扣款可用额度
-        if(moneyF <= creditCardInfo.getAvailableCredit()){
+        if(moneyF <= creditCardInfo.getCreditLimit()){
             newCreditCardInfo.setCreditLimit(creditCardInfo.getCreditLimit() - moneyF);
         }else{
             newCreditCardInfo.setCreditLimit(0f);
@@ -94,6 +94,6 @@ public class CreditCardSpendService implements BaseService {
         transactionsMapper.insert(transactions);
 
         sqlSession.commit();
-        System.out.println(cardNo + " 消费成功, 消费金额: " + moneyF + "剩余可用额度为: " + newCreditCardInfo.getCreditLimit() + "可透支额度为: " + creditCardInfo.getAvailableCredit());
+        System.out.println(cardNo + " 消费成功, 消费金额: " + moneyF + "剩余可用额度为: " + newCreditCardInfo.getCreditLimit() + "可透支额度为: " + newCreditCardInfo.getAvailableCredit());
     }
 }

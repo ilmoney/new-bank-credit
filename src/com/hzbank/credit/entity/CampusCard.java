@@ -47,11 +47,11 @@ public class CampusCard {
         this.transactionPassword = transactionPassword;
     }
 
-    public float getBalance() {
+    public Float getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(Float balance) {
         this.balance = balance;
     }
 }

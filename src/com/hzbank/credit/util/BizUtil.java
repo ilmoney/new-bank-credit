@@ -46,10 +46,8 @@ public class BizUtil {
             //登录功能
             baseService = new LoginService();
         }
-        else if(type == BizTypeEnum.EXIT_BIZ_TYPE.getType())
-        {
-            //退出
-            baseService = new ExitService();
+        else if(type == BizTypeEnum.CREDIT_CARD_PAYMENT_BIZ_TYPE.getType()){
+            baseService = new CreditCardPaymentService();
         }
         return baseService;
     }

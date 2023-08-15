@@ -12,4 +12,6 @@ public interface CashAdvanceMapper {
     // 额外参数传入主键，防止未set
     void updateCashAdvanceByEntity(@Param("cashAdvance") CashAdvance cashAdvance, @Param("cardNumber") String cardNumber);
 
+    void insertCashAdvance(@Param("cashAdvance") CashAdvance cashAdvance);
+
 }

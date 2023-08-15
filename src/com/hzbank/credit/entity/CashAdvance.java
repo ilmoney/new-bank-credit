@@ -16,13 +16,6 @@ public class CashAdvance {
     public CashAdvance() {
     }
 
-    public CashAdvance(String creditCardID, float preApprovedAmount, Date loanDate, float dailyLoanAmount) {
-        this.cardNumber = creditCardID;
-        this.preApprovedAmount = preApprovedAmount;
-        this.loanDate = loanDate;
-        this.dailyLoanAmount = dailyLoanAmount;
-    }
-
     public String getCardNumber() {
         return cardNumber;
     }
@@ -31,11 +24,11 @@ public class CashAdvance {
         this.cardNumber = cardNumber;
     }
 
-    public float getPreApprovedAmount() {
+    public Float getPreApprovedAmount() {
         return preApprovedAmount;
     }
 
-    public void setPreApprovedAmount(float preApprovedAmount) {
+    public void setPreApprovedAmount(Float preApprovedAmount) {
         this.preApprovedAmount = preApprovedAmount;
     }
 
@@ -47,11 +40,11 @@ public class CashAdvance {
         this.loanDate = loanDate;
     }
 
-    public float getDailyLoanAmount() {
+    public Float getDailyLoanAmount() {
         return dailyLoanAmount;
     }
 
-    public void setDailyLoanAmount(float dailyLoanAmount) {
+    public void setDailyLoanAmount(Float dailyLoanAmount) {
         this.dailyLoanAmount = dailyLoanAmount;
     }
 }

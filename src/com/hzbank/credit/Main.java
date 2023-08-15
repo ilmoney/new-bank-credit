@@ -1,5 +1,6 @@
 package com.hzbank.credit;
 
+import com.hzbank.credit.bizenum.BizTypeEnum;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.BizUtil;
 import com.hzbank.credit.util.MyBatisUtil;
@@ -27,11 +28,17 @@ public class Main {
 
             // 输入业务类型
             int bizType = scn.nextInt();
-            BaseService bizService = BizUtil.getServiceByType(bizType);
 
+            // 如果输入的是退出, 则直接退出程序
+            if(bizType == BizTypeEnum.EXIT_BIZ_TYPE.getType()){
+                break;
+            }
+            BaseService bizService = BizUtil.getServiceByType(bizType);
             try {
                 bizService.doBiz();
-            }finally {
+            }catch (Exception e){
+                e.printStackTrace();
+            } finally {
                 MyBatisUtil.getSqlSession().close();
             }
 

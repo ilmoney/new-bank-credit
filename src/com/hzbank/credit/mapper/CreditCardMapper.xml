@@ -18,56 +18,81 @@
     </update>
 
     <update id="updateCreditCardByEntity">
-        update creditcard
+        UPDATE creditcard
         <set>
-            <if test="creditCard.campusCardNumber != null and creditCard.campusCardNumber != ''">
-                AND creditCard.campusCardNumber = #{creditCard.campusCardNumber}
+            <!-- 更新信用卡状态 -->
+            <if test="creditCard.cardStatus != null">
+                cardStatus = #{creditCard.cardStatus},
             </if>
-            <if test="creditCard.cardStatus != null and creditCard.cardStatus != ''">
-                AND creditCard.cardStatus = #{creditCard.cardStatus}
+
+            <!-- 更新交易密码 -->
+            <if test="creditCard.transactionPassword != null">
+                transactionPassword = #{creditCard.transactionPassword},
             </if>
-            <if test="creditCard.transactionPassword != null and creditCard.transactionPassword != ''">
-                AND creditCard.transactionPassword = #{creditCard.transactionPassword}
-            </if>
+
+            <!-- 更新信用额度 -->
             <if test="creditCard.creditLimit != null">
-                AND creditCard.creditLimit = #{creditCard.creditLimit}
+                creditLimit = #{creditCard.creditLimit},
             </if>
-            <if test="creditCard.currency != null and creditCard.currency != ''">
-                AND creditCard.currency = #{creditCard.currency}
+
+            <!-- 更新币种 -->
+            <if test="creditCard.currency != null">
+                currency = #{creditCard.currency},
             </if>
+
+            <!-- 更新可透支额度 -->
             <if test="creditCard.availableCredit != null">
-                AND creditCard.availableCredit = #{creditCard.availableCredit}
+                availableCredit = #{creditCard.availableCredit},
             </if>
+
+            <!-- 更新年费 -->
             <if test="creditCard.annualFee != null">
-                AND creditCard.annualFee = #{creditCard.annualFee}
+                annualFee = #{creditCard.annualFee},
             </if>
+
+            <!-- 更新消费次数 -->
             <if test="creditCard.transactionCount != null">
-                AND creditCard.transactionCount = #{creditCard.transactionCount}
+                transactionCount = #{creditCard.transactionCount},
             </if>
+
+            <!-- 更新已还款金额 -->
             <if test="creditCard.totalRepaid != null">
-                AND creditCard.totalRepaid = #{creditCard.totalRepaid}
+                totalRepaid = #{creditCard.totalRepaid},
             </if>
+
+            <!-- 更新已消费金额 -->
             <if test="creditCard.totalSpent != null">
-                AND creditCard.totalSpent = #{creditCard.totalSpent}
+                totalSpent = #{creditCard.totalSpent},
             </if>
+
+            <!-- 更新最低还款金额 -->
             <if test="creditCard.minimumRepayment != null">
-                AND creditCard.minimumRepayment = #{creditCard.minimumRepayment}
+                minimumRepayment = #{creditCard.minimumRepayment},
             </if>
+
+            <!-- 更新卡内余额 -->
             <if test="creditCard.cardBalance != null">
-                AND creditCard.cardBalance = #{creditCard.cardBalance}
+                cardBalance = #{creditCard.cardBalance},
             </if>
+
+            <!-- 更新应还金额 -->
             <if test="creditCard.amountDue != null">
-                AND creditCard.amountDue = #{creditCard.amountDue}
+                amountDue = #{creditCard.amountDue},
             </if>
+
+            <!-- 更新未还部分（最低） -->
             <if test="creditCard.unpaidMinmumRepayment != null">
-                AND creditCard.unpaidMinmumRepayment = #{creditCard.unpaidMinmumRepayment}
+                unpaidMinmumRepayment = #{creditCard.unpaidMinmumRepayment},
             </if>
+
+            <!-- 更新日利息 -->
             <if test="creditCard.dailyInterest != null">
-                AND creditCard.dailyInterest = #{creditCard.dailyInterest}
+                dailyInterest = #{creditCard.dailyInterest},
             </if>
         </set>
-        WHERE cardNumber = #{cardNumber}
-
+        WHERE
+        <!-- 设置更新的条件 -->
+        creditCard = #{cardNumber}
     </update>
 
     <select id="getCreditCardInfo" resultType="com.hzbank.credit.entity.CreditCard">

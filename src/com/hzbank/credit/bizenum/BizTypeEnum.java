@@ -8,7 +8,7 @@ public enum BizTypeEnum {
     CHANGE_PASS_BIZ_TYPE(3, "修改密码"),
     CREDIT_CARD_SPEND_BIZ_TYPE(4, "刷卡消费"),
     CASH_ADVANCE_BIZ_TYPE(5, "预借现金"),
-    CREDIT_CARD_PAYMENTS_BIZ_TYPE(6, "信用卡还款"),
+    CREDIT_CARD_PAYMENT_BIZ_TYPE(6, "信用卡还款"),
     PIN_CARD_BIZ_TYPE(7, "销卡"),
     EXIT_BIZ_TYPE(8,"退出");
 

@@ -1,10 +1,12 @@
 package com.hzbank.credit.service.impl;
 
 import com.hzbank.credit.bizenum.CardTypeEnum;
-import com.hzbank.credit.cons.bizconstant;
+import com.hzbank.credit.cons.BizConstant;
 import com.hzbank.credit.entity.CampusCard;
+import com.hzbank.credit.entity.CashAdvance;
 import com.hzbank.credit.entity.CreditCard;
 import com.hzbank.credit.mapper.CampusCardMapper;
+import com.hzbank.credit.mapper.CashAdvanceMapper;
 import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.CheckNumber;
@@ -12,6 +14,7 @@ import com.hzbank.credit.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -78,12 +81,12 @@ public class OpenCardService implements BaseService {
         String cardid = CheckNumber.generateBankCardNumber("6");
         CreditCard crecard = new CreditCard();
         crecard.setCreditCard(cardid);
-        crecard.setAnnualFee(bizconstant.annualfee);
+        crecard.setAnnualFee(BizConstant.ANNUAL_FEE);
         crecard.setCampusCardNumber(campusid);
         crecard.setTransactionPassword(password);
-        crecard.setCreditLimit(bizconstant.creditLimit);
+        crecard.setCreditLimit(BizConstant.CREDIT_LIMIT);
         crecard.setCurrency(currency);
-        crecard.setAvailableCredit(bizconstant.availablcredit);
+        crecard.setAvailableCredit(BizConstant.AVAILABL_CREDIT);
         crecard.setTransactionCount(0);
         crecard.setCardBalance(0f);
         crecard.setCardStatus(CardTypeEnum.CARD_NORMAL_TYPE.getName());
@@ -93,8 +96,18 @@ public class OpenCardService implements BaseService {
             SqlSession copenssion = MyBatisUtil.getSqlSession();
             CreditCardMapper cmapper = copenssion.getMapper(CreditCardMapper.class);
             cmapper.insertCredit(crecard);
+
+            // 保存预借现金表
+            CashAdvanceMapper cashAdvanceMapper = copenssion.getMapper(CashAdvanceMapper.class);
+            CashAdvance cashAdvance = new CashAdvance();
+            cashAdvance.setDailyLoanAmount(BizConstant.DAILY_LOAN_AMOUNT);
+            cashAdvance.setPreApprovedAmount(BizConstant.CREDIT_LIMIT * BizConstant.PRE_AMOUNT_PERCENT);
+            cashAdvance.setCardNumber(cardid);
+            cashAdvance.setLoanDate(new Date());
+            cashAdvanceMapper.insertCashAdvance(cashAdvance);
+
             copenssion.commit();
-            System.out.println("开卡成功！您的卡号未: " + cardid);
+            System.out.println("开卡成功！您的卡号为: " + cardid);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

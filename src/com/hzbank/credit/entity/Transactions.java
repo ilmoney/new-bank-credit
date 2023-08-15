@@ -17,7 +17,7 @@ public class Transactions {
     public Transactions() {
     }
 
-    public Transactions(String creditCard, String expenseSource, float expenseAmount, Date expenseTime, String expenseType) {
+    public Transactions(String creditCard, String expenseSource, Float expenseAmount, Date expenseTime, String expenseType) {
         this.creditCard = creditCard;
         this.expenseSource = expenseSource;
         this.expenseAmount = expenseAmount;
@@ -41,11 +41,11 @@ public class Transactions {
         this.expenseSource = expenseSource;
     }
 
-    public float getExpenseAmount() {
+    public Float getExpenseAmount() {
         return expenseAmount;
     }
 
-    public void setExpenseAmount(float expenseAmount) {
+    public void setExpenseAmount(Float expenseAmount) {
         this.expenseAmount = expenseAmount;
     }
 
