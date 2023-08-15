@@ -2,14 +2,14 @@ package com.hzbank.credit;
 
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.BizUtil;
-import org.apache.log4j.PropertyConfigurator;
+import com.hzbank.credit.util.MyBatisUtil;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
     // 登录的卡号
-    public static String loginCardNo = "1234";
+    public static String loginCardNo = null;
     public static void main(String[] args) throws IOException {
         Scanner scn = new Scanner(System.in);
         while (true){
@@ -28,7 +28,13 @@ public class Main {
             // 输入业务类型
             int bizType = scn.nextInt();
             BaseService bizService = BizUtil.getServiceByType(bizType);
-            bizService.doBiz();
+
+            try {
+                bizService.doBiz();
+            }finally {
+                MyBatisUtil.getSqlSession().close();
+            }
+
         }
     }
 }
