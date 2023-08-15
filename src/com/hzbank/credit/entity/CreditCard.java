@@ -1,20 +1,35 @@
 package com.hzbank.credit.entity;
 
 public class CreditCard {
+    //卡号
     private String creditCardID;
+    //一卡通账号
     private String campusCardNumber;
+    //交易密码
     private String transactionPassword;
+    //信用额度
     private float creditLimit;
+    //币种
     private String currency;
+    //可透支额度
     private float availableCredit;
+    //年费
     private float annualFee;
+    //消费次数
     private int transactionCount;
+    //已还款金额
     private float totalRepaid;
+    //已消费金额
     private float totalSpent;
+    //最低还款金额
     private float minimumRepaymeng;
+    //卡内余额
     private float cardBalance;
+    //应还金额
     private float amountDue;
+    //未还部分（最低）
     private float unpaidMinmumRepayment;
+    //日利息
     private float dailyInterest;
 
     public CreditCard() {
