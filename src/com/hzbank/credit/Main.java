@@ -1,28 +1,28 @@
 package com.hzbank.credit;
 
-import com.hzbank.credit.entity.UserInfo;
-import com.hzbank.credit.mapper.UserInfoMapper;
-import com.hzbank.credit.util.MyBatisUtil;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
+import com.hzbank.credit.service.BaseService;
+import com.hzbank.credit.util.BizUtil;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        Scanner scn = new Scanner(System.in);
+        while (true){
+            System.out.println("欢迎进入信用卡业务");
+            System.out.println("1. 一卡通账户开户");
+            System.out.println("2. 信息卡开卡(美元、人民币)");
+            System.out.println("3. 修改密码");
+            System.out.println("4. 刷卡消费");
+            System.out.println("5. 预借现金");
+            System.out.println("6. 信用卡还款");
+            System.out.println("7. 销卡");
+            System.out.println("请输出需要办理的业务:");
 
-        //1.获取SqlSessionFactory对象
-        SqlSessionFactory sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
-        //2.获取sqlSession对象
-        SqlSession openSession = sqlSessionFactory.openSession();
-        try {
-            //3.获取接口的实现类对象
-            //会为接口自动的创建一个代理对象，代理对象去执行增删改查方法
-            UserInfoMapper mapper = openSession.getMapper(UserInfoMapper.class);
-            UserInfo empByID = mapper.getUserInfoById(2);
-            System.out.println(empByID);
-        }finally {
-            openSession.close();
+            // 输入业务类型
+            int bizType = scn.nextInt();
+            BaseService bizService = BizUtil.getServiceByType(bizType);
+            bizService.doBiz();
         }
     }
 }
