@@ -7,6 +7,9 @@
         INSERT INTO campuscard (IDNumber,PhoneNumber,CampusCardID,TransactionPassword,Balance)
         VALUES (#{campus.idNumber}, #{campus.phoneNumber},#{campus.campusCardID},#{campus.transactionPassword},#{campus.balance})
     </insert>
+    <select id="selectbyid" resultType="com.hzbank.credit.entity.CampusCard">
+        select * from campuscard where  CampuseCardID = #{id} and IDNumber = #{idnumber} and TransactionPassword = #{password}
+    </select>
 
 </mapper>
 
