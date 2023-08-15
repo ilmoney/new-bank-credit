@@ -1,6 +1,7 @@
 package com.hzbank.credit.service.impl;
 
 import com.hzbank.credit.entity.CampusCard;
+import com.hzbank.credit.entity.CreditCard;
 import com.hzbank.credit.mapper.CampusCardMapper;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.CheckNumber;
@@ -42,6 +43,11 @@ public class OpenCardService implements BaseService {
         }
 
         //生成卡号
+        String cardid = CheckNumber.generateBankCardNumber("6");
+        CreditCard crecard = new CreditCard();
+        crecard.setCreditCardID(cardid);
+        crecard.setAnnualFee(100);
+
 
     }
 }
