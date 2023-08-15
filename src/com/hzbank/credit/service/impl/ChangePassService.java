@@ -1,5 +1,6 @@
 package com.hzbank.credit.service.impl;
 
+import com.hzbank.credit.Main;
 import com.hzbank.credit.entity.CreditCard;
 import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
@@ -14,45 +15,11 @@ public class ChangePassService implements BaseService {
     public void doBiz() throws IOException {
         System.out.println("=============欢迎进入修改密码功能====================");
         Scanner in = new Scanner(System.in);
-        String cardid = null;
-        String idnumber = null;
-        String password = null;
+        String cardid = Main.loginCardNo;;
         CreditCard credicard = new CreditCard();
-        while (true) {
-            System.out.println("请输入卡号：");
-            cardid = in.nextLine();
-            //查询用户是否存在
-            SqlSession openssion = MyBatisUtil.getSqlSession();
-            CreditCardMapper mapper = openssion.getMapper(CreditCardMapper.class);
-            credicard = mapper.getCrediCardInfo(cardid);
-            if(credicard==null)
-                System.out.println("卡号不存在，请重新输入");
-            else
-                break;
-        }
-//        while(true) {
-//            System.out.println("请输入身份证号：");
-//            idnumber = in.nextLine();
-//            if(!idnumber.equals(credicard.getCreditCardID()))
-//            {
-//                System.out.println("身份证输入不正确！！");
-//            }
-//            else {
-//                break;
-//            }
-//        }
-
-
-        while(true) {
-            System.out.println("请输入密码：");
-            password = in.nextLine();
-            if(!password.equals(credicard.getTransactionPassword()))
-            {
-                System.out.println("密码输入不正确！！");
-            }
-            else {
-                break;
-            }
+        if(cardid==null) {
+            System.out.println("请先登录账号！");
+            return;
         }
         String newpass = null;
         String newpasscheck = null;
