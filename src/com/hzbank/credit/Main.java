@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     // 登录的卡号
-    public static String loginCardNo = "1234";
+    public static String loginCardNo = null;
     public static void main(String[] args) throws IOException {
         Scanner scn = new Scanner(System.in);
         while (true){

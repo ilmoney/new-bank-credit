@@ -4,6 +4,8 @@ import com.hzbank.credit.bizenum.BizTypeEnum;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.service.impl.*;
 
+import static javafx.application.Platform.exit;
+
 public class BizUtil {
     public static BaseService getServiceByType(int type){
 
@@ -25,9 +27,19 @@ public class BizUtil {
         }
         else if(type == BizTypeEnum.PIN_CARD_BIZ_TYPE.getType())
         {
+            //销户功能
             baseService = new CancellationService();
         }
-
+        else if(type == BizTypeEnum.NONE_BIZ_TYPE.getType())
+        {
+            //登录功能
+            baseService = new LoginService();
+        }
+        else if(type == BizTypeEnum.EXIT_BIZ_TYPE.getType())
+        {
+            //退出
+            baseService = new ExitService();
+        }
         return baseService;
     }
 }
