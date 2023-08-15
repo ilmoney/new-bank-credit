@@ -23,6 +23,10 @@ public class BizUtil {
             //修改密码功能
             baseService = new ChangePassService();
         }
+        else if(type == BizTypeEnum.PIN_CARD_BIZ_TYPE.getType())
+        {
+            baseService = new CancellationService();
+        }
 
         return baseService;
     }
