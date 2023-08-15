@@ -41,7 +41,7 @@ public class BizUtil {
         }else if(type == BizTypeEnum.LOGIN_BIZ_TYPE.getType()){
             baseService = new LoginService();
         }
-        else if(type == BizTypeEnum.NONE_BIZ_TYPE.getType())
+        else if(type == BizTypeEnum.LOGIN_BIZ_TYPE.getType())
         {
             //登录功能
             baseService = new LoginService();
