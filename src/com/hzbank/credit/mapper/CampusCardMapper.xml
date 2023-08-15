@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hzbank.credit.mapper.CampusCardMapper">
-    <insert id="insertCreditCard" parameterType="com.hzbank.credit.entity.CampusCard">
+    <insert id="insertCampuse" parameterType="com.hzbank.credit.entity.CampusCard">
         INSERT INTO campuscard (IDNumber,PhoneNumber,CampusCardID,TransactionPassword,Balance)
         VALUES (#{campus.idNumber}, #{campus.phoneNumber},#{campus.campusCardID},#{campus.transactionPassword},#{campus.balance})
     </insert>

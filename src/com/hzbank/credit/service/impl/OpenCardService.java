@@ -1,8 +1,11 @@
 package com.hzbank.credit.service.impl;
 
+import com.hzbank.credit.bizenum.CardTypeEnum;
+import com.hzbank.credit.cons.bizconstant;
 import com.hzbank.credit.entity.CampusCard;
 import com.hzbank.credit.entity.CreditCard;
 import com.hzbank.credit.mapper.CampusCardMapper;
+import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.CheckNumber;
 import com.hzbank.credit.util.MyBatisUtil;
@@ -18,6 +21,7 @@ public class OpenCardService implements BaseService {
         String campusid = null;
         String idnumber = null;
         String password = null;
+        String currency = null;
         CampusCard campus = new CampusCard();
         //输入一卡通账号
         while(true)
@@ -29,24 +33,69 @@ public class OpenCardService implements BaseService {
             System.out.println("请输入密码：");
             password = in.nextLine();
             try {
+                //查询一卡通用户是否存在
                 SqlSession openssion = MyBatisUtil.getSqlSession();
                 CampusCardMapper mapper = openssion.getMapper(CampusCardMapper.class);
                 campus = mapper.selectbyid(campusid,idnumber,password);
-                if(campus==null)
+                if(campus==null) {
                     System.out.println("用户不存在，请先创建一卡通账号！！");
-                else
+                    openssion.close();
+                    return;
+                }
+                else {
+                    openssion.close();
                     break;
+                }
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+        while(true) {
+            System.out.println("请选择币种：");
+            System.out.println("1.美元");
+            System.out.println("2.人民币");
+            int sl = in.nextInt();
+            if (sl == 1) {
+                currency = "美元";
+                break;
+            }
+            else if (sl == 2) {
+                currency = "人民币";
+                break;
+            }
+            else
+                System.out.println("请输入正确选项！！");
         }
 
         //生成卡号
         String cardid = CheckNumber.generateBankCardNumber("6");
         CreditCard crecard = new CreditCard();
         crecard.setCreditCardID(cardid);
-        crecard.setAnnualFee(100);
+        crecard.setAnnualFee(bizconstant.annualfee);
+        crecard.setCampusCardNumber(campusid);
+        crecard.setTransactionPassword(password);
+        crecard.setCreditLimit(bizconstant.creditLimit);
+        crecard.setCurrency(currency);
+        crecard.setAvailableCredit(bizconstant.availablcredit);
+        crecard.setTransactionCount(0);
+        crecard.setCardBalance(0);
+        crecard.setCardStaus(CardTypeEnum.CARD_NORMAL_TYPE.getName());
+
+        //数据库插入卡号
+        try {
+            SqlSession copenssion = MyBatisUtil.getSqlSession();
+            CreditCardMapper cmapper = copenssion.getMapper(CreditCardMapper.class);
+            cmapper.insertCredit(crecard);
+            copenssion.commit();;
+            copenssion.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
 
 
     }

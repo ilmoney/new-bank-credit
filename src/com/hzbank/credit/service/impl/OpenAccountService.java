@@ -63,7 +63,7 @@ public class OpenAccountService implements BaseService {
             campusCardEntity.setPhoneNumber(phonenumber);
             campusCardEntity.setTransactionPassword(password);
             campusCardEntity.setBalance(0);
-            mapper.insertCreditCard(campusCardEntity);
+            mapper.insertCampuse(campusCardEntity);
             openSession.commit();
             openSession.close();
             System.out.println("创建一卡通账号成功并返回首页！！！！");

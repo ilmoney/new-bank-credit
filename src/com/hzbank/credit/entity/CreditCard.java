@@ -5,6 +5,8 @@ public class CreditCard {
     private String creditCardID;
     //一卡通账号
     private String campusCardNumber;
+    //信用卡状态
+    private String cardStaus;
     //交易密码
     private String transactionPassword;
     //信用额度
@@ -156,4 +158,12 @@ public class CreditCard {
     public void setDailyInterest(float dailyInterest) {
         this.dailyInterest = dailyInterest;
     }
+    public String getCardStaus() {
+        return cardStaus;
+    }
+
+    public void setCardStaus(String cardStaus) {
+        this.cardStaus = cardStaus;
+    }
+
 }
