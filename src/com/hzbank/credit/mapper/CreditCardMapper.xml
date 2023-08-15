@@ -3,12 +3,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hzbank.credit.mapper.CreditCardMapper">
-    <insert id="insertCredit">
-        INSERT into credicard (CreditCard,CampusCardNumber,CardStatus,TransactionPassword,CreditLimit,Currency,AvailableCredit,AnnualFee,TransactionCount,TotalSpent,TotalRepaid,MinimumRepayment,CardBalance,AmountDue,UnpaidMinimumRepayment,DailyInterest)
-        VALUES (#{crecard.creditCardID},#{crecard.campusCardNumber},#{crecard.cardStaus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid}#{crecard.minimumRepaymeng},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
+    <insert id="insertCredit" parameterType="com.hzbank.credit.entity.CreditCard">
+        INSERT into creditcard (CreditCard,CampusCardNumber,CardStatus,TransactionPassword,CreditLimit,Currency,AvailableCredit,AnnualFee,TransactionCount,TotalSpent,TotalRepaid,MinimumRepayment,CardBalance,AmountDue,UnpaidMinimumRepayment,DailyInterest)
+        VALUES (#{crecard.creditCardID},#{crecard.campusCardNumber},#{crecard.cardStaus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid},#{crecard.minimumRepaymeng},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
     </insert>
+    <update id="updatePass">
+        UPDATE creditcard
+        <set>
+            <if test="password != null">
+                TransactionPassword = #{password},
+            </if>
+        </set>
+        WHERE CreditCard = #{cardnumber}
+    </update>
     <select id="getCrediCardInfo" resultType="com.hzbank.credit.entity.CreditCard">
-
+          select * from creditcard where CreditCard = #{id}
     </select>
 
 </mapper>
