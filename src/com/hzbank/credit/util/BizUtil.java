@@ -5,6 +5,7 @@ import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.service.impl.CreditCardService;
 import com.hzbank.credit.service.impl.CreditCardSpendService;
 import com.hzbank.credit.service.impl.OpenAccountService;
+import com.hzbank.credit.service.impl.OpenCardService;
 
 public class BizUtil {
     public static BaseService getServiceByType(int type){
@@ -15,7 +16,7 @@ public class BizUtil {
             baseService = new OpenAccountService();
         }else if(type == BizTypeEnum.CREDIT_CARD_BIZ_TYPE.getType()){
             // 信用卡开卡功能
-            baseService = new CreditCardService();
+            baseService = new OpenCardService();
         }else if(type == BizTypeEnum.CREDIT_CARD_SPEND_BIZ_TYPE.getType()){
             // 刷卡消费功能
             baseService = new CreditCardSpendService();

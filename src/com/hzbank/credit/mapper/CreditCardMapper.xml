@@ -4,10 +4,8 @@
 
 <mapper namespace="com.hzbank.credit.mapper.CreditCardMapper">
     <insert id="insertCredit">
-        INSERT into credicard (CreditCard,CampusCardNumber,CardStatus,TransactionPassword,CreditLimit,Currency,AvailableCredit,AnnualFee,TransactionCount,TotalSpent,TotalRepaid,
-                               MinimumRepayment,CardBalance,AmountDue,UnpaidMinimumRepayment,DailyInterest)
-        VALUES (#{crecard.creditCardID},#{crecard.campusCardNumber},#{crecard.cardStaus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid}
-        #{crecard.minimumRepaymeng},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
+        INSERT into credicard (CreditCard,CampusCardNumber,CardStatus,TransactionPassword,CreditLimit,Currency,AvailableCredit,AnnualFee,TransactionCount,TotalSpent,TotalRepaid,MinimumRepayment,CardBalance,AmountDue,UnpaidMinimumRepayment,DailyInterest)
+        VALUES (#{crecard.creditCardID},#{crecard.campusCardNumber},#{crecard.cardStaus},#{crecard.transactionPassword},#{crecard.creditLimit},#{crecard.currency},#{crecard.availableCredit},#{crecard.annualFee},#{crecard.transactionCount},#{crecard.totalSpent},#{crecard.totalRepaid}#{crecard.minimumRepaymeng},#{crecard.cardBalance},#{crecard.amountDue},#{crecard.unpaidMinmumRepayment},#{crecard.dailyInterest})
     </insert>
     <select id="getCrediCardInfo" resultType="com.hzbank.credit.entity.CreditCard">
 
