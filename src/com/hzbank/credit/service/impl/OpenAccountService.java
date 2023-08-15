@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * 一卡通开卡服务业务逻辑
+ * 一卡通开卡接口
  */
 public class OpenAccountService implements BaseService {
     public void doBiz(){
@@ -54,6 +54,7 @@ public class OpenAccountService implements BaseService {
                 break;
             }
         }
+        //开户
         try {
             SqlSession openSession = MyBatisUtil.getSqlSession();
             CampusCardMapper mapper = openSession.getMapper(CampusCardMapper.class);

@@ -4,9 +4,13 @@ import java.util.Date;
 
 public class CashAdvance {
 
+    //卡号
     private String cardNumber;
+    //预借现金额度
     private Float preApprovedAmount;
+    //借款日期
     private Date loanDate;
+    //每日借款额
     private Float dailyLoanAmount;
 
     public CashAdvance() {

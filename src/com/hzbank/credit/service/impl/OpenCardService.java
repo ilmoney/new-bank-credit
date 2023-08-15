@@ -14,6 +14,9 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * 开卡接口
+ */
 public class OpenCardService implements BaseService {
     @Override
     public void doBiz() throws IOException {
@@ -51,6 +54,8 @@ public class OpenCardService implements BaseService {
             else
                 break;
         }
+
+        //选择币种
         while(true)
         {
             System.out.println("请选择币种：");

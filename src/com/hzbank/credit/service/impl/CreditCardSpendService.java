@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * 开卡消费service
+ * 开卡消费接口
  */
 public class CreditCardSpendService implements BaseService {
 

@@ -10,6 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * 登录接口
+ */
 public class LoginService implements BaseService {
 
 

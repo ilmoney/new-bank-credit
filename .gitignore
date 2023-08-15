@@ -46,6 +46,7 @@ new-bank-credit.iml
 *.zip
 *.tar.gz
 *.rar
+*.properties
 
 # CMake
 cmake-build-debug/
