@@ -3,10 +3,15 @@ package com.hzbank.credit.entity;
 import java.util.Date;
 
 public class Transactions {
+    //卡号
     private String creditCard;
+    //消费来源
     private String expenseSource;
+    //消费金额
     private float expenseAmount;
+    //消费时间
     private Date expenseTime;
+    //消费类型
     private String expenseType;
 
     public Transactions() {

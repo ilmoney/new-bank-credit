@@ -3,9 +3,13 @@ package com.hzbank.credit.entity;
 import java.util.Date;
 
 public class CashAdvance {
+    //卡号
     private String creditCardID;
+    //预借现金额度
     private float preApprovedAmount;
+    //借款日期
     private Date loanDate;
+    //每日借款额
     private float dailyLoanAmount;
 
     public CashAdvance() {
