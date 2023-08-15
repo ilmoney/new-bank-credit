@@ -17,6 +17,8 @@ import java.util.Scanner;
 public class OpenCardService implements BaseService {
     @Override
     public void doBiz() {
+
+        System.out.println("=======================欢迎进入信用卡开卡服务======================");
         Scanner in = new Scanner(System.in);
         String campusid = null;
         String idnumber = null;
@@ -28,15 +30,12 @@ public class OpenCardService implements BaseService {
         {
             System.out.println("请输入一卡通账号：");
             campusid = in.nextLine();
-            System.out.println("请输入身份证号:");
-            idnumber = in.nextLine();
-            System.out.println("请输入密码：");
-            password = in.nextLine();
+
             try {
                 //查询一卡通用户是否存在
                 SqlSession openssion = MyBatisUtil.getSqlSession();
                 CampusCardMapper mapper = openssion.getMapper(CampusCardMapper.class);
-                campus = mapper.selectbyid(campusid,idnumber,password);
+                campus = mapper.selectbyid(campusid);
                 if(campus==null) {
                     System.out.println("用户不存在，请先创建一卡通账号！！");
                     openssion.close();
@@ -44,14 +43,24 @@ public class OpenCardService implements BaseService {
                 }
                 else {
                     openssion.close();
-                    break;
                 }
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+            //验证身份证和密码
+            System.out.println("请输入身份证号:");
+            idnumber = in.nextLine();
+            System.out.println("请输入密码：");
+            password = in.nextLine();
+            if(!campus.getIdNumber().equals(idnumber))
+                System.out.println("身份证输入错误");
+            else if(!campus.getTransactionPassword().equals(password))
+                System.out.println("密码输入错误");
+            else
+                break;
         }
-        while(true) {
+        while(true)
+        {
             System.out.println("请选择币种：");
             System.out.println("1.美元");
             System.out.println("2.人民币");
@@ -87,16 +96,11 @@ public class OpenCardService implements BaseService {
             SqlSession copenssion = MyBatisUtil.getSqlSession();
             CreditCardMapper cmapper = copenssion.getMapper(CreditCardMapper.class);
             cmapper.insertCredit(crecard);
+            System.out.println("开卡成功！");
             copenssion.commit();;
             copenssion.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-
-
-
-
     }
 }

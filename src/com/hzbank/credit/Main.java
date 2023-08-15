@@ -22,6 +22,7 @@ public class Main {
             System.out.println("5. 预借现金");
             System.out.println("6. 信用卡还款");
             System.out.println("7. 销卡");
+            System.out.println("8. 退出");
             System.out.println("请输出需要办理的业务:");
 
             // 输入业务类型

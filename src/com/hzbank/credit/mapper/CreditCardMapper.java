@@ -5,5 +5,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface CreditCardMapper {
     CreditCard getCrediCardInfo(String id);
-    CreditCard insertCredit(@Param("crecard") CreditCard creditCard);
+    void insertCredit(@Param("crecard") CreditCard crecard);
+
+    void updatePass(@Param("password") String password,@Param("cardnumber") String cardnumber);
 }
