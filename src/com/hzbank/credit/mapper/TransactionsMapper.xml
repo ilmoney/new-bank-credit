@@ -1,0 +1,11 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hzbank.credit.mapper.TransactionsMapper">
+    <insert id="insert" parameterType="com.hzbank.credit.entity.Transactions">
+        insert into transactions(CreditCard, ExpenseSource, ExpenseAmount, ExpenseTime, ExpenseType)
+        values (#{transactions.creditCard}, #{transactions.expenseSource}, #{transactions.expenseAmount}, #{transactions.expenseTime}, #{transactions.expenseType})
+    </insert>
+
+</mapper>

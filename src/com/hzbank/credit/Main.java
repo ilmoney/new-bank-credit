@@ -2,10 +2,14 @@ package com.hzbank.credit;
 
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.BizUtil;
+import org.apache.log4j.PropertyConfigurator;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+    // 登录的卡号
+    public static String loginCardNo = "1234";
     public static void main(String[] args) throws IOException {
         Scanner scn = new Scanner(System.in);
         while (true){

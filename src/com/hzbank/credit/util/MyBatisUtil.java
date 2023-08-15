@@ -1,6 +1,8 @@
 package com.hzbank.credit.util;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.mapping.Environment;
+import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -27,12 +29,10 @@ public class MyBatisUtil {
     }
 
     public static SqlSession getSqlSession() throws IOException {
-        if(sqlSession == null){
-            //1.获取SqlSessionFactory对象
-            SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-            //2.获取sqlSession对象
-            sqlSession = sqlSessionFactory.openSession();
-        }
+        //1.获取SqlSessionFactory对象
+        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
+        //2.获取sqlSession对象
+        sqlSession = sqlSessionFactory.openSession();
         return sqlSession;
     }
 
