@@ -4,7 +4,7 @@ public enum BizTypeEnum {
 
     NONE_BIZ_TYPE(0, "无效"),
     OPEN_ACCOUNT_BIZ_TYPE(1, "一卡通账户开户"),
-    CREDIT_CARD_BIZ_TYPE(2, "信息卡开卡(美元、人民币)"),
+    CREDIT_CARD_BIZ_TYPE(2, "开卡"),
     CHANGE_PASS_BIZ_TYPE(3, "修改密码"),
     CREDIT_CARD_SPEND_BIZ_TYPE(4, "刷卡消费"),
     CASH_ADVANCE_BIZ_TYPE(5, "预借现金"),
