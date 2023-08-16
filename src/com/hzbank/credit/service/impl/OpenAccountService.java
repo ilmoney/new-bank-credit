@@ -1,13 +1,16 @@
 package com.hzbank.credit.service.impl;
 
+import com.hzbank.credit.cons.BizConstant;
 import com.hzbank.credit.entity.CampusCard;
 import com.hzbank.credit.mapper.CampusCardMapper;
 import com.hzbank.credit.service.BaseService;
+import com.hzbank.credit.util.BaseUtil;
 import com.hzbank.credit.util.CheckNumber;
 import com.hzbank.credit.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 /**
@@ -62,13 +65,14 @@ public class OpenAccountService implements BaseService {
             campusCardEntity.setCampusCardID(campuscardID);
             campusCardEntity.setIdNumber(IDCard);
             campusCardEntity.setPhoneNumber(phonenumber);
+            password = BaseUtil.encryptBASE64(password.getBytes(StandardCharsets.UTF_8));
             campusCardEntity.setTransactionPassword(password);
             campusCardEntity.setBalance(0f);
             mapper.insertCampuse(campusCardEntity);
             openSession.commit();
             System.out.println("创建一卡通账号" + campuscardID  + "成功并返回首页！！！！");
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
 

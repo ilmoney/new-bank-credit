@@ -9,6 +9,7 @@ import com.hzbank.credit.mapper.CampusCardMapper;
 import com.hzbank.credit.mapper.CashAdvanceMapper;
 import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
+import com.hzbank.credit.util.BaseUtil;
 import com.hzbank.credit.util.CheckNumber;
 import com.hzbank.credit.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
@@ -22,7 +23,7 @@ import java.util.Scanner;
  */
 public class OpenCardService implements BaseService {
     @Override
-    public void doBiz() throws IOException {
+    public void doBiz() throws Exception {
 
         System.out.println("=======================欢迎进入信用卡开卡服务======================");
         Scanner in = new Scanner(System.in);
@@ -41,6 +42,11 @@ public class OpenCardService implements BaseService {
             SqlSession openssion = MyBatisUtil.getSqlSession();
             CampusCardMapper mapper = openssion.getMapper(CampusCardMapper.class);
             campus = mapper.selectbyid(campusid);
+            String pwd = campus.getTransactionPassword();
+            byte[] bytes = BaseUtil.decryptBASE64(pwd);
+
+            campus.setTransactionPassword(new String(bytes));
+
             if(campus==null) {
                 System.out.println("用户不存在，请先创建一卡通账号！！");
                 return;
