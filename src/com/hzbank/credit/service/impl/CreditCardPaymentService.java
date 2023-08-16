@@ -70,6 +70,18 @@ public class CreditCardPaymentService implements BaseService {
             }
         }
 
+        if(type == 1){
+            if(moneyF > spendMoney){
+                System.out.println("还款金额大于消费额度");
+                return;
+            }
+        }else if(type == 2){
+            if(moneyF > preMoney){
+                System.out.println("还款金额大于预借额度");
+                return;
+            }
+        }
+
         float remainPre = 0;
         float remainAdvance = 0;
         if(type == 1){
@@ -78,7 +90,7 @@ public class CreditCardPaymentService implements BaseService {
             remainPre = spendMoney - moneyF;
             remainAdvance = preMoney;
         }else if(type == 2){
-            // 进行
+            // 进行预借额度还款
             paymentAdvance(cardNo, cashAdvance, sqlSession, moneyF);
             remainPre = spendMoney;
             remainAdvance = preMoney - moneyF;

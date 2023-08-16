@@ -1,6 +1,7 @@
 package com.hzbank.credit;
 
 import com.hzbank.credit.bizenum.BizTypeEnum;
+import com.hzbank.credit.mapper.CreditCardMapper;
 import com.hzbank.credit.service.BaseService;
 import com.hzbank.credit.util.BizUtil;
 import com.hzbank.credit.util.MyBatisUtil;
@@ -12,6 +13,8 @@ public class Main {
     // 登录的卡号
     public static String loginCardNo = null;
     public static void main(String[] args) throws IOException {
+        // 初始化sqlSession，防止后面连接数据库连接报错
+        init();
         Scanner scn = new Scanner(System.in);
         while (true){
             System.out.println("===========================功能页！欢迎进入信用卡业务=======================");
@@ -43,5 +46,10 @@ public class Main {
             }
 
         }
+    }
+
+    private static void init() throws IOException {
+        MyBatisUtil.getSqlSession().getMapper(CreditCardMapper.class);
+        MyBatisUtil.getSqlSession().close();
     }
 }

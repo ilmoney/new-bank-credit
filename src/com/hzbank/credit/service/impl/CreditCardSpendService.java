@@ -62,6 +62,7 @@ public class CreditCardSpendService implements BaseService {
         // 比可用信用额度低，优先扣款可用额度
         if(moneyF <= creditCardInfo.getCreditLimit()){
             newCreditCardInfo.setCreditLimit(creditCardInfo.getCreditLimit() - moneyF);
+            newCreditCardInfo.setAvailableCredit(creditCardInfo.getAvailableCredit());
         }else{
             newCreditCardInfo.setCreditLimit(0f);
             newCreditCardInfo.setAvailableCredit(creditCardInfo.getAvailableCredit() + creditCardInfo.getCreditLimit() - moneyF);
